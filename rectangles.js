@@ -1,6 +1,7 @@
 function Rectangle () {
 	this.wHeight = window.innerHeight;
 	this.wWidth = window.innerWidth;
+	this.floatLeft = true
 }
 
 Rectangle.prototype.appendInitialRect = function() {
@@ -23,4 +24,26 @@ Rectangle.prototype.getOrientation = function(size) {
 
 Rectangle.prototype.splitDiv = function(rectangle, size, orientation) {
 	console.log(orientation)
+	this.floatLeft = !this.floatLeft
+	if (orientation = "landscape") {
+		$(rectangle).prepend("<div class='rect' style='height:" + size[1] + "px; width:" + (size[0] / 2) + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
+	} else {
+		$(rectangle).prepend("<div class='rect' style='height:" + (size[0] / 2) + "px; width:" + size[1] + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
+	}
+};
+
+Rectangle.prototype.removeOldRect = function(rectangle) {
+	$.each($(".rect"), function(index, rect){
+		if ($(rect).children) {
+
+		}
+	})
+};
+
+Rectangle.prototype.leftOrRight = function(bool) {
+	if (bool) {
+		return "left"
+	} else {
+		return "right"
+	}
 };
