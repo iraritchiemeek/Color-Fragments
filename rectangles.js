@@ -26,9 +26,9 @@ Rectangle.prototype.splitDiv = function(rectangle, size, orientation) {
 	console.log(orientation)
 	this.floatLeft = !this.floatLeft
 	if (orientation === "landscape" && $(rectangle).children.length <= 2) {
-		$(rectangle).prepend("<div class='rect' style='height:" + size[1] + "px; width:" + (size[0] / 2) + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
+		$(rectangle).append("<div class='rect' style='height:" + size[1] + "px; width:" + (size[0] / 2) + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
 	} else if (orientation === "portrait" && $(rectangle).children.length <= 2) {
-		$(rectangle).prepend("<div class='rect' style='height:" + (size[0] / 2) + "px; width:" + size[1] + "px;'/>")
+		$(rectangle).append("<div class='rect' style='height:" + (size[1] / 2) + "px; width:" + size[0] + "px;'/>")
 	}
 };
 
