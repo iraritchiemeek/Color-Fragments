@@ -14,7 +14,7 @@ Rectangle.prototype.getSize = function(rectangle) {
 };
 
 Rectangle.prototype.getOrientation = function(size) {
-	if (size[0] < size[1]) {
+	if (size[0] > size[1]) {
 		this.orientation = "landscape"
 	} else {
 		this.orientation = "portrait"
@@ -25,10 +25,10 @@ Rectangle.prototype.getOrientation = function(size) {
 Rectangle.prototype.splitDiv = function(rectangle, size, orientation) {
 	console.log(orientation)
 	this.floatLeft = !this.floatLeft
-	if (orientation = "landscape") {
+	if (orientation === "landscape" && $(rectangle).children.length <= 2) {
 		$(rectangle).prepend("<div class='rect' style='height:" + size[1] + "px; width:" + (size[0] / 2) + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
-	} else {
-		$(rectangle).prepend("<div class='rect' style='height:" + (size[0] / 2) + "px; width:" + size[1] + "px; background-color:" + getRandomColor() + "; float:" + this.leftOrRight(this.floatLeft) + ";'/>")
+	} else if (orientation === "portrait" && $(rectangle).children.length <= 2) {
+		$(rectangle).prepend("<div class='rect' style='height:" + (size[0] / 2) + "px; width:" + size[1] + "px;'/>")
 	}
 };
 
